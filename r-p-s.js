@@ -1,7 +1,24 @@
+const choiceButtons = document.querySelectorAll(".choiceButtons");
+const playerText = document.querySelectorAll(".playerText");
+const computerText = document.querySelectorAll(".computerText");
+const score = document.querySelector(".scoreboard");
+const restart = document.querySelector(".restart");
+
 let playerScore = 0;
 let computerScore = 0;
+let playerSelection;
+let computerSelection;
 
-function computerPlay() {
+choiceButtons.forEach((button) =>
+  button.addEventListener("click", () => {
+    playerSelection = button.textContent;
+    computerTurn();
+    playerText.textContent = "you picked: ${playerSelection}";
+    computerText.textContent = "${computerSelection}";
+  })
+);
+
+function computerTurn() {
   let choice = math.floor(math.random() * 3 + 1);
   if (choice === 1) {
     return "rock";
