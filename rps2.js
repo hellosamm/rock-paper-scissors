@@ -1,37 +1,42 @@
 let computerScore = 0;
 let playerScore = 0;
 
+const playerSelection = document.querySelectorAll("#button");
+const results = document.querySelectorAll(".results");
+const score = document.querySelectorAll(".score");
 
-let playState = false;
-
-function getComputerChoice() {
-  const computer = ["rock", "paper", "scissors"];
-  const computer = math.floor(math.random() * 3);
-  return computer[randomIndex];
+function computerSelection() {
+  const choices = ["rock", "paper", "scissors"];
+  let randomSelection = Math.floor(Math.random() * choices.length);
+  let computerChoice = choices[randomSelection];
+  console.log(computerChoice);
+  return computerChoice;
 }
+
+// paperBtn.addEventListener("click", () => playerSelection);
+
+computerSelection();
 
 function playGame() {
-  if (playerSelection == computerSelection);
-    return "it's a tie, you both selected ${playerSelection}"
-  } else if 
-  (playerSelection === "rock" && computerSelection === "paper") ||
-  (playerSelection === "paper" && computerSelection === "scissors") ||
-  (playerSelection === "scissors" && computerSelection === "rock"){
-    computerScore ++1
-    return '${computerSelection} beats ${playerSelection}, you lost';
-
-  } else if 
-  (playerSelection === "paper" && computerSelection === "rock") ||
-  (playerSelection === "scissors" && computerSelection === "paper") ||
-  (playerSelection === "rock" && computerSelection === "scissors"){
-    playerScore ++1
-    return '${playerSelection} beats ${computerSelection}, you won!';
+  if (playerSelection === computerSelection) {
+    results.textContent = "you both selected ${playerSelection}, it's a tie";
+  } else if (playerSelection === "paper" && computerSelection === "scissors") {
+    computerScore = computerScore++;
+    results.textContent =
+      "${computerSelection} beats ${playerSelection}, you lost";
+  } else if (playerSelection === "scissors" && computerSelection === "rock") {
+    computerScore = computerScore++;
+    results.textContent =
+      "${computerSelection} beats ${playerSelection}, you lost";
+  } else if (playerSelection === "rock" && computerSelection === "paper") {
+    computerScore = computerScore++;
+    results.textContent =
+      "${computerSelection} beats ${playerSelection}, you lost";
   } else {
-    return("try again")
+    playerScore = playerScore++;
+    results.textContent =
+      "${playerSelection} beats ${computerSelection}, you lost";
   }
-
-  
-
-  
-
 }
+
+playGame();
